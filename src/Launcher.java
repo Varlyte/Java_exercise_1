@@ -15,6 +15,8 @@ public class Launcher {
                     nbr2 = nbr3;
                 }
                 System.out.println("" + nbr3);
+                nbr1 = 0;
+                nbr2 = 1;
             } else {
                 System.out.println("Unknown command");
             }
