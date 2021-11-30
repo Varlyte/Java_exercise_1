@@ -1,8 +1,5 @@
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
+
 import java.util.Scanner;
-import java.nio.file.*;
 import java.util.ArrayList;
 
 
@@ -15,6 +12,7 @@ public class Launcher {
         CommandList.add(new Quit());
         CommandList.add(new Fibo());
         CommandList.add(new Freq());
+        CommandList.add(new Predict());
         int index =-1;
         System.out.println("Welcome !");
         while(!running){

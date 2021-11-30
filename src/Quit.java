@@ -10,5 +10,4 @@ public class Quit implements Command {
     public boolean run(Scanner scanner) {
         return true;
     }
-
 }
