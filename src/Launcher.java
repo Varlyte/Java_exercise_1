@@ -1,7 +1,11 @@
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 import java.nio.file.*;
+import java.util.stream.Stream;
+import java.util.ArrayList;
+
 
 public class Launcher {
     public static void main(String[] args) {
@@ -10,8 +14,11 @@ public class Launcher {
         String Svar = var.next();
         String path, content;
         String[] contentTab;
+        ArrayList<String> treatedElem = new ArrayList<String>();
         Path filechemin;
-        int nbr1 = 0, nbr2 = 1, nbr3=0, i, nbr;
+        int[] wordLenght = new int[100];
+
+        int nbr1 = 0, nbr2 = 1, nbr3=0, i, nbr, pass=0, max=0;
         while (!Svar.equals("quit")) {
             if (Svar.equals("fibo")) {
                 nbr = var.nextInt();
@@ -40,13 +47,31 @@ public class Launcher {
                     content = content.replaceAll("\n", " ");
                     content = content.toLowerCase(Locale.ROOT);
                     contentTab = content.split(" ");
-                    for(String word : contentTab){
-                        if(word.isBlank()) {
-                            word = null;
+                    int cpt, indice=0;
+                    for(String word : contentTab) {
+                        if (!word.isBlank()) {
+                            //if word not in arraylist treatedElem
+                            if(!treatedElem.contains(content)){
+                                cpt=0;
+                                for(int c=0; c< contentTab.length; c++){
+                                    if(contentTab.equals(contentTab[c])){
+                                        cpt+=1;
+                                    }
+                                }
+                                wordLenght[indice] = cpt;
+                                treatedElem.add(word);
+                                for(int k=0; k<wordLenght.length; k++){
+                                    if(max < wordLenght[k]){
+                                        max=wordLenght[k];
+                                        pass=k;
+                                    }
+                                }
+                            }
                         }
-                        System.out.println(word);
+                        indice+=1;
                     }
-                    //System.out.println(content);
+                    System.out.println("le mot le plus utilise est "+contentTab[pass]);
+                    //N'affiche que le premier mot, je ne comprends pas pourquoi : mes compteurs sont bien incrémenter
                 }
                 catch (IOException e){
                     e.printStackTrace();
