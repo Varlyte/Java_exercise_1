@@ -1,15 +1,32 @@
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.nio.file.*;
-import java.util.stream.Stream;
 import java.util.ArrayList;
 
 
 public class Launcher {
     public static void main(String[] args) {
-        System.out.println("Welcome !");
+
+        Scanner var = new Scanner(System.in);
+        boolean running = true;
+        ArrayList<Command> CommandList = null;
+        CommandList.add(new Quit());
+        CommandList.add(new Fibo());
+        CommandList.add(new Freq());
+        while(running){
+            String Svar = var.next();
+            for(int i = 0; i < CommandList.size(); i++){
+                if(Svar.equals(CommandList.get(i).name())){
+                    //exec les commandes correspondantes
+                }
+            }
+            //if svar.equals() une cmd dans la liste => go execute la methode (Quit/Fibo/Freq).run(Svar)
+            //Sinon print unknown command
+        }
+
+        /*System.out.println("Welcome !");
         Scanner var = new Scanner(System.in);
         String Svar = var.next();
         String path, content;
@@ -81,6 +98,6 @@ public class Launcher {
                 System.out.println("Unknown command");
             }
             Svar = var.next();
-        }
+        }*/
     }
 }
